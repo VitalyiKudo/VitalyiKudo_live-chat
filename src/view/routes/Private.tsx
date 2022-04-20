@@ -3,13 +3,13 @@ import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Pages
-import { Main } from '../pages';
+import { Register } from '../pages';
 
 export const Private: FC = () => {
     return (
         <Routes>
             <Route
-                element = { <Main /> }
+                element = { <Register /> }
                 path = '/'
             />
         </Routes>
