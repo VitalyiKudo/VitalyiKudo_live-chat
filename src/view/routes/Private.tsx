@@ -1,16 +1,25 @@
 // Core
 import React, { FC } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Pages
-import { Register } from '../pages';
+import Main from '../pages/Main';
 
 export const Private: FC = () => {
     return (
         <Routes>
             <Route
-                element = { <Register /> }
+                element = { <Main /> }
                 path = '/'
+            />
+            <Route
+                element = {
+                    <Navigate
+                        replace
+                        to = '/'
+                    />
+                }
+                path = '*'
             />
         </Routes>
     );

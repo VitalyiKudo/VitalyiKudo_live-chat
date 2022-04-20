@@ -10,13 +10,13 @@ export const Public: FC = () => {
         <Routes>
             <Route
                 element = { <Register /> }
-                path = '/'
+                path = '/register'
             />
             <Route
                 element = {
                     <Navigate
                         replace
-                        to = '/'
+                        to = '/register'
                     />
                 }
                 path = '*'
