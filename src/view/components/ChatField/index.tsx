@@ -3,6 +3,7 @@ import React, { FC, useEffect } from 'react';
 
 // Bus
 import { useTogglersRedux } from '../../../bus/client/togglers';
+import { useMessages } from '../../../bus/messages';
 import { useUser } from '../../../bus/user';
 
 // Styles
@@ -15,10 +16,10 @@ type PropTypes = {
 
 export const ChatField: FC<PropTypes> = () => {
     const { setTogglerAction } = useTogglersRedux();
-    // const [ user, setUser ] = useState('');
     const { getUser, user } = useUser();
+    const { messages } = useMessages();
 
-    console.log(localStorage.getItem('userId'));
+    console.log(messages);
 
 
     useEffect(() => {
