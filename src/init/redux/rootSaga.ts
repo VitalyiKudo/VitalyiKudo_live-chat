@@ -1,9 +1,10 @@
 // Core
 import { all } from 'redux-saga/effects';
+// import { watchUser } from '../../bus/user/saga';
 
 // Tools
-// import { watch__entityName__ } from '../../bus/__entityName__/saga';
+import { watchUser } from '../../bus/user/saga';
 
 export function* rootSaga() {
-    yield all([ /* watch__entityName__() */ ]);
+    yield all([ watchUser() ]);
 }

@@ -8,20 +8,21 @@ import { userActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
-import { API_URL } from '../../../init/constants';
+// import { API_URL } from '../../../init/constants';
+
 
 // Action
-export const fetchUserAction = createAction<number>(`${sliceName}/FETCH_MESSAGES_ASYNC`);
+export const getUserAction = createAction(`${sliceName}/GET_USER_ASYNC`);
 
 // Types
 import { User } from '../types';
 
 // Saga
-const fetchUser = (callAction: ReturnType<typeof fetchUserAction>) => makeRequest<User>({
+const getUser = (callAction: ReturnType<typeof getUserAction>) => makeRequest<User>({
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`${API_URL}/user`, {
+        fetch:             () => fetch(`https://api.barbarossa.pp.ua/users/refresh/${localStorage.getItem('userId')}`, {
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,12 +30,13 @@ const fetchUser = (callAction: ReturnType<typeof fetchUserAction>) => makeReques
         }),
     },
     succes: function* (result) {
-        yield console.log(result);
+        console.log('res ', result);
+
         yield put(userActions.setUser(result));
     },
 });
 
 // Watcher
 export function* watchFetchUser(): SagaIterator {
-    yield takeLatest(fetchUserAction.type, fetchUser);
+    yield takeLatest(getUserAction.type, getUser);
 }

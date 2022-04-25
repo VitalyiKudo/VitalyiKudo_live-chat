@@ -1,6 +1,7 @@
 // Core
 import React, { FC, useState } from 'react';
 import { useTogglersRedux } from '../../../bus/client/togglers';
+import { useUser } from '../../../bus/user';
 
 // Styles
 import * as S from './styles';
@@ -8,27 +9,13 @@ import * as S from './styles';
 export const RegisterField: FC = () => {
     const { setTogglerAction } = useTogglersRedux();
     const [ userName, setUserName ] = useState('');
+    const { createUser } = useUser();
 
-    console.log(localStorage.getItem('userId'));
-
-
-    const fetchUser =  (data: string) => {
-        return fetch('https://api.barbarossa.pp.ua/users/register', {
-            method:  'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username: data }),
-        });
-    };
-
-    const submit = async (userName:string) => {
+    const submit = (userName:string) => {
         const field = userName ? userName : 'BAUUUUUUS';
-        await fetchUser(field)
-            .then((response) => response.json())
-            .then((data) => {
-                localStorage.setItem('userId', data._id);
-            });
+
+        createUser(field);
+
         setTogglerAction({ type: 'isLoggedIn', value: true });
     };
 
