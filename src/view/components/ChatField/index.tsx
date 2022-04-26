@@ -14,10 +14,7 @@ import * as S from './styles';
 export const ChatField: FC = () => {
     const { setTogglerAction } = useTogglersRedux();
     const { getUser, user } = useUser();
-    const { messages } = useMessages();
-
-    // console.log(messages);
-
+    const { messages, createMessage } = useMessages();
 
     useEffect(() => {
         getUser();
@@ -31,37 +28,15 @@ export const ChatField: FC = () => {
     return (
         <S.Container>
             <main className = 'main'>
-                <h1 className = 'user-name'>Your name is {user?.username}</h1>
-                <button
-                    className = 'log-out'
-                    onClick = { logOut }>Log out
-                </button>
+                <header>
+                    <h1 className = 'user-name'>Your name is <span className = 'name-span'>{user?.username}</span></h1>
+                    <button
+                        className = 'log-out'
+                        onClick = { logOut }>LOGOUT
+                    </button>
+                </header>
                 <section className = 'chat-section'>
-                    <Formik
-                        initialValues = {
-                            {
-                                message: '',
-                            }
-                        }
-                        onSubmit = { () => console.log('a')
-                        }>
-                        {({ handleSubmit }) => (
-                            <form
-                                className = 'entry-field'
-                                onSubmit = { handleSubmit }>
-                                <Field
-                                    className = 'message'
-                                    name = 'message'
-                                    type = 'text'>
-                                </Field>
-                                <button
-                                    className = 'submit'
-                                    type = 'submit'>SEND
-                                </button>
-                            </form>
-                        )}
-                    </Formik>
-                    <div>
+                    <div className = 'messages'>
                         {messages?.map((messages, index) => (
                             <div className = 'chat-message' >
                                 <Message
@@ -72,6 +47,35 @@ export const ChatField: FC = () => {
                         ))}
                     </div>
                 </section>
+                <Formik
+                    initialValues = {
+                            {
+                                message: '',
+                            }
+                        }
+                    onSubmit = { (value: any, { resetForm }) => {
+                            createMessage({
+                                text:     value.message,
+                                username: user?.username,
+                            });
+                            resetForm();
+                        } }>
+                    {({ handleSubmit }) => (
+                        <form
+                            className = 'entry-field'
+                            onSubmit = { handleSubmit }>
+                            <Field
+                                className = 'message'
+                                name = 'message'
+                                type = 'text'>
+                            </Field>
+                            <button
+                                className = 'submit'
+                                type = 'submit'>SEND
+                            </button>
+                        </form>
+                        )}
+                </Formik>
             </main>
         </S.Container>
     );

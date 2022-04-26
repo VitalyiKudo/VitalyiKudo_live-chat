@@ -10,30 +10,31 @@ import { messagesActions, sliceName } from '../slice';
 import { makeRequest } from '../../../tools/utils';
 // import { API_URL } from '../../../init/constants';
 
-// Action
-export const fetchMessagesAction = createAction(`${sliceName}/FETCH_MESSAGES_ASYNC`);
-
 // Types
-import { Messages } from '../types';
+import * as types from '../types';
+
+// Action
+export const createMessagesAction = createAction<types.SimpleMessage>(`${sliceName}/CREATE_MESSAGES_ASYNC`);
 
 // Saga
-const fetchMessages = (callAction: ReturnType<typeof fetchMessagesAction>) => makeRequest<Messages>({
+const createMessage = (callAction: ReturnType<typeof createMessagesAction>) => makeRequest<types.SimpleMessage>({
     callAction,
     fetchOptions: {
-        successStatusCode: 200,
+        successStatusCode: 201,
         fetch:             () => fetch('https://api.barbarossa.pp.ua/messages', {
-            method:  'GET',
+            method:  'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify(callAction.payload),
         }),
     },
     succes: function* (result) {
-        yield put(messagesActions.setMessages(result));
+        yield put(messagesActions.setMessage(result));
     },
 });
 
 // Watcher
-export function* watchFetchMessages(): SagaIterator {
-    yield takeLatest(fetchMessagesAction.type, fetchMessages);
+export function* watchCreateMessage(): SagaIterator {
+    yield takeLatest(createMessagesAction.type, createMessage);
 }

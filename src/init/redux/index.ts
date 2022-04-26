@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import togglers from '../../bus/client/togglers';
 import user from '../../bus/user/slice';
 import messages from '../../bus/messages/slice';
+import message from '../../bus/messages/slice';
 // import __entityName__ from '../../bus/__entityName__/slice';
 
 // Middleware
@@ -18,6 +19,7 @@ export const store = configureStore({
         togglers,
         user,
         messages,
+        message,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',

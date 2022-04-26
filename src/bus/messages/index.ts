@@ -10,14 +10,18 @@ import { useMessagesSaga } from './saga';
 // import { useMessagesSaga } from './saga';
 
 export const useMessages = () => {
-    const { fetchMessages } = useMessagesSaga();
+    const { fetchMessages, createMessage, editMessage, deleteMessage } = useMessagesSaga();
     const messages = useSelector((state) => state.messages.messages); // Add messages to ./src/init/redux/index.ts
+    const message = useSelector((state) => state.messages.message);
 
     useEffect(() => {
         fetchMessages();
-    }, []);
+    }, [ message ]);
 
     return {
         messages,
+        createMessage,
+        editMessage,
+        deleteMessage,
     };
 };

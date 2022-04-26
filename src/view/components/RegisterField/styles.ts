@@ -25,7 +25,7 @@ export const Container = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid #FF69B4;
+    border: 2px solid #00BFFF;
     /* box-shadow: -1px 4px 5px -1px rgba(0,0,0,0.72); */
     .chat-image {
         width: 100px;
@@ -59,6 +59,7 @@ export const Container = styled.section`
             &:hover {
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
                 transition: 0.4s;
+                background-color:  #FF69B4;
             }
         }
     }

@@ -10,10 +10,16 @@ export type Message = {
     updatedAt: string,
 }
 
+export type SimpleMessage = {
+    text: string,
+    username: string | undefined,
+}
+
 export type Messages = Array<Message>
 
 export type MessagesState = {
     messages: Messages | null
+    message: SimpleMessage | null
 }
 
 // Contracts
