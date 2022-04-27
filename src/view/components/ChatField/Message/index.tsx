@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-indent */
 // Core
 import moment from 'moment';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 // Bus
@@ -17,17 +17,24 @@ type PropTypes = {
     username: string,
     text: string,
     createdAt: string,
-    // updatedAt: string,
+    updatedAt: string,
 }
 
-export const Message: FC<PropTypes> = ({ username, text, createdAt, _id }) => {
+export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _id }) => {
     // States
     const [ editMode, setEditMode ] = useState(false);
-    const [ editText, setEditText ] = useState('');
+    const [ editText, setEditText ] = useState(text);
+    const [ isEdited, setIsEdited ] = useState(false);
 
     // Hooks
     const { user } = useUser();
     const { editMessage, deleteMessage } = useMessages();
+
+    useEffect(()=>{
+        if (updatedAt !== createdAt) {
+            setIsEdited(true);
+        }
+    }, [ isEdited ]);
 
     // classes
     const myMessage = classNames('my-message', { edit: editMode });
@@ -56,6 +63,7 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, _id }) => {
                             ? <div>
                                 <input
                                     className = 'edit-field'
+                                    maxLength = { 100 }
                                     type = 'text'
                                     onChange = { (event) => setEditText(event.target.value) }
                                 />
@@ -77,6 +85,11 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, _id }) => {
                             onClick = { deleteMsg }>X
                         </button>
                     </div>
+                    {
+                        isEdited
+                        ? <p className = 'my-edit-status'>edited</p>
+                        : null
+                    }
                 </main>
             </S.Container>
         );
@@ -88,6 +101,11 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, _id }) => {
                 <p className = 'name'>{username}</p>
                 <div className = 'text'>{text}</div>
                 <p className = 'create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
+                    {
+                        isEdited
+                        ? <p className = 'edit-status'>edited</p>
+                        : null
+                    }
             </main>
         </S.Container>
     );

@@ -1,4 +1,5 @@
 // Core
+import { uniqueId } from 'lodash';
 import React, { FC, useState } from 'react';
 import { useTogglersRedux } from '../../../bus/client/togglers';
 import { useUser } from '../../../bus/user';
@@ -11,8 +12,10 @@ export const RegisterField: FC = () => {
     const [ userName, setUserName ] = useState('');
     const { createUser } = useUser();
 
+    const baus = uniqueId('BAUS');
+
     const submit = (userName:string) => {
-        const field = userName ? userName : 'BAUUUUUUS';
+        const field = userName ? userName : baus;
 
         createUser(field);
 
@@ -36,7 +39,8 @@ export const RegisterField: FC = () => {
                     <div className = 'for-field'>
                         <input
                             className = 'field'
-                            placeholder = ''
+                            maxLength = { 25 }
+                            placeholder = { baus }
                             type = 'text'
                             value = { userName }
                             onChange = { (event) => setUserName(event.target.value) }

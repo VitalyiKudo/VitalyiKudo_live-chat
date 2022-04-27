@@ -2,7 +2,6 @@
 // import { useEffect } from 'react';
 
 // Tools
-import { useEffect } from 'react';
 import { useSelector } from '../../tools/hooks';
 import { useMessagesSaga } from './saga';
 
@@ -14,12 +13,14 @@ export const useMessages = () => {
     const messages = useSelector((state) => state.messages.messages); // Add messages to ./src/init/redux/index.ts
     const message = useSelector((state) => state.messages.message);
 
-    useEffect(() => {
-        fetchMessages();
-    }, [ message ]);
+    // useEffect(() => {
+    //     fetchMessages();
+    // }, [ message ]);
 
     return {
+        message,
         messages,
+        fetchMessages,
         createMessage,
         editMessage,
         deleteMessage,

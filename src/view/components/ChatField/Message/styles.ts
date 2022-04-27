@@ -11,6 +11,9 @@ border-radius: 6%;
 background-color: white;
 width: 160px;
 height: 80px;
+    @media (max-width: 700px) {
+        width: 150px;
+    }
 }
 .text, .my-text {
     padding: 15px 0px;
@@ -19,8 +22,32 @@ height: 80px;
     padding-left: 85px;
     font-size: 14px;
 }
+.edit-status, .my-edit-status {
+    font-weight: bold;
+}
 .my-message {
     margin-left: 290px;
+    @media (max-width: 700px) {
+        margin-left: 230px;
+    }   
+    @media (max-width: 395px) {
+        margin-left: 220px;
+    }
+    @media (max-width: 386px) {
+        margin-left: 210px;
+    }
+    @media (max-width: 375px) {
+        margin-left: 200px;
+    }
+    @media (max-width: 360px) {
+        margin-left: 190px;
+    }
+}
+.edit-status {
+    margin: -17px 90px 0px 0px;
+}
+.my-edit-status {
+    margin: -60px 90px 0px 0px;
 }
 .name {
     color: #FF69B4;
@@ -44,6 +71,19 @@ height: 80px;
     width: 250px;
     height: 90px;
     margin-left: 200px;
+    @media (max-width: 700px) {
+        width: 230px;
+        margin-left: 140px;
+    }
+    @media (max-width: 386px) {
+        margin-left: 140px;
+    }
+    @media (max-width: 386px) {
+        margin-left: 125px;
+    }
+    @media (max-width: 360px) {
+        margin-left: 110px;
+    }
     .edit-field {
         margin-top: 22px;
         margin-bottom: 5px;
