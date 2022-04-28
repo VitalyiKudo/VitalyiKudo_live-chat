@@ -1,5 +1,6 @@
 // Core
 import React, { FC, useState } from 'react';
+import { useKeyboard } from '../../../bus/keyboard';
 
 // Bus
 import { useMessages } from '../../../bus/messages';
@@ -12,6 +13,11 @@ export const EntryField: FC = () => {
     const { createMessage } = useMessages();
     const { user } = useUser();
 
+    const { keyboard, setKeyboardValue } = useKeyboard();
+
+    console.log(`keyboard: ${keyboard}`);
+
+
     const [ text, setText ] = useState('');
 
 
@@ -21,7 +27,8 @@ export const EntryField: FC = () => {
             text:     text,
             username: user?.username,
         });
-        }
+        setKeyboardValue('aaa');
+    }
     };
 
     return (
