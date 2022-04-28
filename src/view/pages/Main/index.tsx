@@ -1,21 +1,54 @@
 // Core
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { useMessages } from '../../../bus/messages';
+import { useUser } from '../../../bus/user';
 
 // Components
 import { ErrorBoundary } from '../../components';
-import { ChatField } from '../../components/ChatField';
+import { ChatSection } from '../../components/ChatSection';
+import { EntryField } from '../../components/EntryField';
+import { Header } from '../../components/Header';
+import { Keyboard } from '../../components/Keyboard';
 
 // Styles
 import * as S from './styles';
 
-// Types
-type PropTypes = {
-    /* type props here */
-}
-const Main: FC<PropTypes> = () => {
+const Main: FC = () => {
+    const { getUser } = useUser();
+    const { message, fetchMessages } = useMessages();
+
+    const [ keyboardStatus, setKeyboardStatus ] = useState(true);
+
+    useEffect(() => {
+        getUser();
+        fetchMessages();
+    }, [ message ]);
+
+    const keyboardHandler = () => {
+        keyboardStatus ? setKeyboardStatus(false) : setKeyboardStatus(true);
+    };
+
     return (
         <S.Container>
-            <ChatField />
+            <main className = 'main'>
+                <Header />
+                <ChatSection />
+                <EntryField />
+                <button
+                    className = 'keyboard-btn'
+                    onClick = { keyboardHandler }>
+                    {
+                        keyboardStatus
+                        ? 'Disable keyboard'
+                        : 'Enabled keyboard'
+                    }
+                </button>
+                {
+                    keyboardStatus
+                    ? <Keyboard />
+                    : null
+                }
+            </main>
         </S.Container>
     );
 };

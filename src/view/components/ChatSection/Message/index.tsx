@@ -21,12 +21,12 @@ type PropTypes = {
 }
 
 export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _id }) => {
-    // States
+    // local states
     const [ editMode, setEditMode ] = useState(false);
     const [ editText, setEditText ] = useState(text);
     const [ isEdited, setIsEdited ] = useState(false);
 
-    // Hooks
+    // hooks
     const { user } = useUser();
     const { editMessage, deleteMessage } = useMessages();
 
