@@ -8,10 +8,12 @@ import * as types from './types';
 import * as reducers from './reducers';
 
 const initialState = {
-    keyboardValue: '',
+    focus:     '',
+    value:     '',
+    upperCase: false,
 };
 
-export const keyboardSlice = createSlice<types.Keyboard, typeof reducers>({
+export const keyboardSlice = createSlice<types.KeyboardState, typeof reducers>({
     name: 'keyboard',
     initialState,
     reducers,

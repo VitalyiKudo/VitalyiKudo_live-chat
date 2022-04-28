@@ -1,5 +1,5 @@
 // Core
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useKeyboard } from '../../../bus/keyboard';
 
 // Bus
@@ -11,33 +11,36 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
+    const { keyboard, setKeyboardValue, focus, setFocus } = useKeyboard();
     const { user } = useUser();
 
-    const { keyboard, setKeyboardValue } = useKeyboard();
+    const input = document.querySelector('input');
 
-    console.log(`keyboard: ${keyboard}`);
+    const logKey = (element: any) => {
+        setFocus(element.key);
+    };
 
-
-    const [ text, setText ] = useState('');
+    input?.addEventListener('keydown', logKey);
 
 
     const submitText = () => {
-        if (text) {
+        if (keyboard) {
         createMessage({
-            text:     text,
+            text:     keyboard,
             username: user?.username,
         });
-        setKeyboardValue('aaa');
     }
     };
 
     return (
         <S.Container>
             <div className = 'entry-field'>
+                <h1>Focus: {focus}</h1>
                 <input
                     className = 'message-field'
                     type = 'text'
-                    onChange = { (element) => setText(element.target.value) }
+                    value = { keyboard }
+                    onChange = { (element) => setKeyboardValue(element.target.value) }
                 />
                 <button
                     className = 'submit'

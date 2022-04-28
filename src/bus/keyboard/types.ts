@@ -3,9 +3,11 @@ import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
 // State
 export type Keyboard = {
-    keyboardValue: string
+    focus: string,
+    value: string,
+    upperCase: boolean,
 }
-// export type KeyboardState = Keyboard | null
+export type KeyboardState = Keyboard
 
 // Contracts
-export type BaseContact<T = any> = CaseReducer<Keyboard, PayloadAction<T>>
+export type BaseContact<T = any> = CaseReducer<KeyboardState, PayloadAction<T>>
