@@ -14,23 +14,16 @@ export const EntryField: FC = () => {
     const { keyboard, setKeyboardValue, focus, setFocus } = useKeyboard();
     const { user } = useUser();
 
-    const input = document.querySelector('input');
-
     const keyDown = (event: any) => {
         if (!focus) {
             setFocus(event.keyCode);
         }
-        event.stopImmediatePropagation();
     };
     const keyUp = () => {
         if (focus) {
             setFocus(null);
         }
     };
-
-    input?.addEventListener('keydown', keyDown);
-    input?.addEventListener('keyup', keyUp);
-
 
     const submitText = () => {
         if (keyboard) {
@@ -49,6 +42,8 @@ export const EntryField: FC = () => {
                     type = 'text'
                     value = { keyboard }
                     onChange = { (element) => setKeyboardValue(element.target.value) }
+                    onKeyDown = { keyDown }
+                    onKeyUp = { keyUp }
                 />
                 <button
                     className = 'submit'
