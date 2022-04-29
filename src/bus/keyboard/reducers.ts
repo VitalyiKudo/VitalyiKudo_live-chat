@@ -5,7 +5,7 @@ export const setValue: types.BaseContact<string> = (state, action) => {
     state.value = action.payload;
 };
 
-export const setFocus: types.BaseContact<string> = (state, action) => {
+export const setFocus: types.BaseContact<types.focus> = (state, action) => {
     state.focus = action.payload;
 };
 

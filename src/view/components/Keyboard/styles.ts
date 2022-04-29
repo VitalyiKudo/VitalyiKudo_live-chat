@@ -1,7 +1,7 @@
 // Core
 import styled from 'styled-components';
 
-export const Container = styled.section`
+export const Container = styled.div`
 main {
     display: flex;
     justify-content: center;
@@ -37,7 +37,6 @@ main {
 }
 /* keys  */
 .key {
-    background-color: #F5F5F5;
     border: 2px solid black;
     border-radius: 5px;
     grid-column: span 2;

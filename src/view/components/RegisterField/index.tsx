@@ -26,7 +26,7 @@ export const RegisterField: FC = () => {
         <S.Container>
             <main className = 'main'>
                 <div className = 'line'></div>
-                <section className = 'fields-section'>
+                <div className = 'fields-section'>
                     <img
                         alt = 'live-chat'
                         className = 'chat-image'
@@ -50,7 +50,7 @@ export const RegisterField: FC = () => {
                             onClick = { () => submit(userName) }>Continue
                         </button>
                     </div>
-                </section>
+                </div>
             </main>
         </S.Container>
     );

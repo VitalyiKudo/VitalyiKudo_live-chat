@@ -2,8 +2,10 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
 // State
+export type focus = number | null;
+
 export type Keyboard = {
-    focus: string,
+    focus: focus,
     value: string,
     upperCase: boolean,
 }

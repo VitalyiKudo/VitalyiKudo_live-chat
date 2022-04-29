@@ -13,7 +13,7 @@ export const ChatSection: FC = () => {
 
     return (
         <S.Container>
-            <section className = 'chat-section'>
+            <div className = 'chat-section'>
                 <div className = 'messages'>
                     {messages?.map((messages, index) => (
                         <div
@@ -25,7 +25,7 @@ export const ChatSection: FC = () => {
                         </div>
                         ))}
                 </div>
-            </section>
+            </div>
         </S.Container>
     );
 };

@@ -1,7 +1,7 @@
 // Core
 import React, { FC } from 'react';
 import { Key } from './Key';
-import { keys } from './keyboardData';
+import { rows } from './keyboardData';
 
 
 // Bus
@@ -22,11 +22,11 @@ export const Keyboard: FC<PropTypes> = () => {
                 <div className = 'keyboard'>
                     <div className = 'keyboard-row first-row'>
                         {
-                            keys.firstRow.map((value, index) => {
+                            rows.ENG.firstRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
-                                        value = { value }
+                                        { ...value }
                                     />
                                 );
                             })
@@ -34,11 +34,11 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row second-row'>
                         {
-                            keys.secondRow.map((value, index) => {
+                            rows.ENG.secondRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
-                                        value = { value }
+                                        { ...value }
                                     />
                                 );
                             })
@@ -46,11 +46,11 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row third-row'>
                         {
-                            keys.thirdRow.map((value, index) => {
+                            rows.ENG.thirdRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
-                                        value = { value }
+                                        { ...value }
                                     />
                                 );
                             })
@@ -58,11 +58,11 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row fourth-row'>
                         {
-                            keys.fourthRow.map((value, index) => {
+                            rows.ENG.fourthRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
-                                        value = { value }
+                                        { ...value }
                                     />
                                 );
                             })
@@ -70,11 +70,11 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row fifth-row'>
                         {
-                            keys.fifthRow.map((value, index) => {
+                            rows.ENG.fifthRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
-                                        value = { value }
+                                        { ...value }
                                     />
                                 );
                             })

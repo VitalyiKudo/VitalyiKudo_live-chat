@@ -1,7 +1,7 @@
 // Core
 import styled from 'styled-components';
 
-export const Container = styled.section`
+export const Container = styled.div`
 .message, .my-message {
 overflow-wrap: break-word;
 overflow: visible;

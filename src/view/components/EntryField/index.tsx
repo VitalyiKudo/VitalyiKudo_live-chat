@@ -16,11 +16,20 @@ export const EntryField: FC = () => {
 
     const input = document.querySelector('input');
 
-    const logKey = (element: any) => {
-        setFocus(element.key);
+    const keyDown = (event: any) => {
+        if (!focus) {
+            setFocus(event.keyCode);
+        }
+        event.stopImmediatePropagation();
+    };
+    const keyUp = () => {
+        if (focus) {
+            setFocus(null);
+        }
     };
 
-    input?.addEventListener('keydown', logKey);
+    input?.addEventListener('keydown', keyDown);
+    input?.addEventListener('keyup', keyUp);
 
 
     const submitText = () => {
@@ -35,7 +44,6 @@ export const EntryField: FC = () => {
     return (
         <S.Container>
             <div className = 'entry-field'>
-                <h1>Focus: {focus}</h1>
                 <input
                     className = 'message-field'
                     type = 'text'

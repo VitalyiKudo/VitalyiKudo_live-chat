@@ -1,7 +1,7 @@
 // Core
 import styled from 'styled-components';
 
-export const Container = styled.section`
+export const Container = styled.div`
 .main {
     text-align: center;
     background-image: url('https://yokotafss.com/wp-content/uploads/2020/04/GettyImages-1160134500-1536x1024.jpg');

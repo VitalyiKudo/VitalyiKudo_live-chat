@@ -7,39 +7,41 @@ import { useKeyboard } from '../../../../bus/keyboard/';
 import { useMessages } from '../../../../bus/messages';
 import { useUser } from '../../../../bus/user';
 
+// Style
+import * as S from './styles';
 
 // Types
 type PropTypes = {
     value: string
+    code: number
 }
 
-export const Key: FC<PropTypes> = ({ value: key }) => {
+export const Key: FC<PropTypes> = ({ value, code }) => {
     const { keyboard, setKeyboardValue, upperCase, setUpperCase, focus } = useKeyboard();
     const { createMessage } = useMessages();
     const { user } = useUser();
-    const [ isActive, setIsActive ] = useState(false);
+    const [ color, setColor ] = useState(false);
 
     useEffect(() => {
-        if (focus === key) {
-            setIsActive(true);
+        if (focus === code) {
+            setColor(true);
+        } else {
+            setColor(false);
         }
-    }, [ isActive ]);
+    }, [ focus ]);
 
-    const localeKey = upperCase && key !== 'Shift' && key !== 'Space' && key !== 'Backspace' && key !== 'Enter' && key !== 'En'
-        ? key.toUpperCase()
-        : key;
+    const localeKey = upperCase && value !== 'Shift' && value !== 'Space' && value !== 'Backspace' && value !== 'Enter' && value !== 'En'
+        ? value.toUpperCase()
+        : value;
 
     const keyClass = classNames('key', {
-        shift:     key === 'Shift',
-        space:     key === 'Space',
-        backspace: key === 'Backspace',
-        active:    isActive,
+        shift:     value === 'Shift',
+        space:     value === 'Space',
+        backspace: value === 'Backspace',
     });
 
-    const activeHandler = () => isActive ? setIsActive(false) : setIsActive(true);
-
     const keyboardHandler = () => {
-        switch (key) {
+        switch (value) {
             case 'Space':
                 setKeyboardValue(keyboard + ' ');
                 break;
@@ -64,11 +66,11 @@ export const Key: FC<PropTypes> = ({ value: key }) => {
     };
 
     return (
-        <div
+        <S.Container
             className = { keyClass }
-            onChange = { activeHandler }
+            isActive = { color }
             onClick = { keyboardHandler }>
             { localeKey }
-        </div>
+        </S.Container>
     );
 };

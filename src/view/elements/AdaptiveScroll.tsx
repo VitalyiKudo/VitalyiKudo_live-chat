@@ -15,7 +15,7 @@ const scrollStyles = (heightDiff: number = 0, minHeight: boolean = false) => {
 };
 
 // Styles
-const ScrollContainer = styled.section<{ heightDiff: number; disableOnMobile?: true; minHeight?: true; }>`
+const ScrollContainer = styled.div<{ heightDiff: number; disableOnMobile?: true; minHeight?: true; }>`
     ${({ disableOnMobile, heightDiff, minHeight }) => {
         const stylesResult = scrollStyles(heightDiff, minHeight);
 
