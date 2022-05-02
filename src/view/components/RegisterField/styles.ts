@@ -7,7 +7,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('https://yokotafss.com/wp-content/uploads/2020/04/GettyImages-1160134500-1536x1024.jpg');
+    background-image: url('https://funart.pro/uploads/posts/2021-04/1618513878_7-funart_pro-p-oboi-fon-fon-anime-noch-7.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 .main {
     text-align: center;
-    background-image: url('https://yokotafss.com/wp-content/uploads/2020/04/GettyImages-1160134500-1536x1024.jpg');
+    background-image: url('https://funart.pro/uploads/posts/2021-04/1618513878_7-funart_pro-p-oboi-fon-fon-anime-noch-7.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -27,7 +27,7 @@ export const Container = styled.div`
         font-size: 16px;
         width: 250px;
         height: 30px;
-        background-color: #F2B5D4;
+        background-color: #3C9CEE;
         border: 1px solid black;
         margin: 2px 0px 0px 5px;
             &:hover {
@@ -56,7 +56,7 @@ export const Container = styled.div`
     .chat-section {
         display: flex;
         flex-direction: column-reverse;
-        background-color:#C9C5E6;
+        background-color:#314D6A;
         overflow: auto;
         border: 1px solid black;
         box-shadow: -1px 3px 5px -1px rgba(0,0,0,0.71);
@@ -94,7 +94,7 @@ export const Container = styled.div`
         .submit {
             width: 100px;
             font-size: 17px;
-            background-color: #F2B5D4;
+            background-color: #3C9CEE;
             border: 1px solid black;
             /* &:hover {
                 background-color: #00BFFF;
@@ -105,7 +105,7 @@ export const Container = styled.div`
     }
     .keyboard-btn {
         margin-top: 10px;
-        background-color: #F9BAD7;
+        background-color: #3C9CEE;
         font-size: 17px;
         border: 1px solid black;
         width: 200px;
