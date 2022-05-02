@@ -94,7 +94,7 @@ export const Container = styled.div`
         .submit {
             width: 100px;
             font-size: 17px;
-            background-color: #C9C5E6;
+            background-color: #F2B5D4;
             border: 1px solid black;
             /* &:hover {
                 background-color: #00BFFF;

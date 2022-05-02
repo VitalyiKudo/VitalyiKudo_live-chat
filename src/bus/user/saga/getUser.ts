@@ -30,8 +30,6 @@ const getUser = (callAction: ReturnType<typeof getUserAction>) => makeRequest<Us
         }),
     },
     succes: function* (result) {
-        console.log('res ', result);
-
         yield put(userActions.setUser(result));
     },
 });

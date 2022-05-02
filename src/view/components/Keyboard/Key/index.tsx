@@ -17,7 +17,7 @@ type PropTypes = {
 }
 
 export const Key: FC<PropTypes> = ({ value, code }) => {
-    const { keyboard, setKeyboardValue, upperCase, setUpperCase, focus } = useKeyboard();
+    const { keyboard, setKeyboardValue, upperCase, setUpperCase, focus, setFocus } = useKeyboard();
     const { createMessage } = useMessages();
     const { user } = useUser();
     const [ color, setColor ] = useState(false);
@@ -39,6 +39,18 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
         space:     value === 'Space',
         backspace: value === 'Backspace',
     });
+
+    const keyDown = () => {
+        if (!focus) {
+            setFocus(code);
+        }
+    };
+
+    const keyUp = () => {
+        if (focus) {
+            setFocus(null);
+        }
+    };
 
     const keyboardHandler = () => {
         switch (value) {
@@ -69,7 +81,9 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
         <S.Container
             className = { keyClass }
             isActive = { color }
-            onClick = { keyboardHandler }>
+            onClick = { keyboardHandler }
+            onMouseDown = { keyDown }
+            onMouseUp = { keyUp }>
             { localeKey }
         </S.Container>
     );

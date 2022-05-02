@@ -11,7 +11,7 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
-    const { keyboard, setKeyboardValue, focus, setFocus } = useKeyboard();
+    const { keyboard, upperCase, setKeyboardValue, focus, setFocus } = useKeyboard();
     const { user } = useUser();
 
     const keyDown = (event: any) => {
@@ -40,13 +40,14 @@ export const EntryField: FC = () => {
                 <input
                     className = 'message-field'
                     type = 'text'
-                    value = { keyboard }
+                    value = { upperCase ? keyboard.toUpperCase() : keyboard }
                     onChange = { (element) => setKeyboardValue(element.target.value) }
                     onKeyDown = { keyDown }
                     onKeyUp = { keyUp }
                 />
                 <button
                     className = 'submit'
+                    disabled = { keyboard === '' }
                     onClick = { submitText }>SEND
                 </button>
             </div>
