@@ -23,7 +23,7 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _
         if (updatedAt !== createdAt) {
             setIsEdited(true);
         }
-    }, []);
+    }, [ updatedAt ]);
 
     if (user?.username === username) {
         return (

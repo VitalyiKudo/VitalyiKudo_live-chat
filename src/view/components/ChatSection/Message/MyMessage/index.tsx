@@ -11,31 +11,44 @@ import { useMessages } from '../../../../../bus/messages';
 import * as types from '../../../../../bus/messages/types';
 
 export const MyMessage: FC<types.Message> = ({ username, text, createdAt, updatedAt, _id }) => {
+    const { editMessage, deleteMessage } = useMessages();
     const [ isEdited, setIsEdited ] = useState(false);
     const [ editMode, setEditMode ] = useState(false);
     const [ editText, setEditText ] = useState(text);
+
+    const myMessage = classNames('my-message', { edit: editMode });
+    const messageBtn = classNames('message-btn', { keep: editMode });
 
     useEffect(()=>{
         if (updatedAt !== createdAt) {
             setIsEdited(true);
         }
-    }, [ isEdited ]);
+    }, [ updatedAt ]);
 
-    const { editMessage, deleteMessage } = useMessages();
-
-    const myMessage = classNames('my-message', { edit: editMode });
-    const messageBtn = classNames('message-btn', { keep: editMode });
+    const sendMessage = () => {
+        if (editText !== text) {
+            editMessage({
+                text: editText,
+                _id,
+            });
+        }
+        if (!editText) {
+            deleteMessage(_id);
+        }
+    };
 
     const editHabdler = () => {
         editMode ? setEditMode(false) : setEditMode(true);
-        localStorage.setItem('messageId', _id);
     };
-    const submit = () => {
-        editMessage({
-            text: editText,
-            _id,
-        });
-        setEditMode(false);
+    const submit = (event: any) => {
+        if (!event.key) {
+            sendMessage();
+            setEditMode(false);
+        }
+        if (event.key === 'Enter') {
+            sendMessage();
+            setEditMode(false);
+        }
     };
     const deleteMsg = () => {
         deleteMessage(_id);
@@ -54,6 +67,7 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                                     type = 'text'
                                     value = { editText }
                                     onChange = { (event) => setEditText(event.target.value) }
+                                    onKeyDown = { submit }
                                 />
                                 <button
                                     className = 'edit-btn'
