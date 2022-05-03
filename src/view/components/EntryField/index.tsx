@@ -14,9 +14,22 @@ export const EntryField: FC = () => {
     const { keyboard, upperCase, setKeyboardValue, focus, setFocus } = useKeyboard();
     const { user } = useUser();
 
+    const sendMessage = () => {
+    if (keyboard) {
+        createMessage({
+            text:     keyboard,
+            username: user?.username,
+         });
+    }
+    setKeyboardValue('');
+    };
+
     const keyDown = (event: any) => {
         if (!focus) {
             setFocus(event.keyCode);
+        }
+        if (event.keyCode === 13) {
+            sendMessage();
         }
     };
     const keyUp = () => {
@@ -26,12 +39,7 @@ export const EntryField: FC = () => {
     };
 
     const submitText = () => {
-        if (keyboard) {
-        createMessage({
-            text:     keyboard,
-            username: user?.username,
-        });
-    }
+    sendMessage();
     };
 
     return (

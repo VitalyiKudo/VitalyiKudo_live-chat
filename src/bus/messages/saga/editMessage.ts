@@ -14,20 +14,21 @@ import { makeRequest } from '../../../tools/utils';
 import * as types from '../types';
 
 // Action
-export const editMessagesAction = createAction<string>(`${sliceName}/EDIT_MESSAGES_ASYNC`);
+export const editMessagesAction = createAction<types.editAction>(`${sliceName}/EDIT_MESSAGES_ASYNC`);
 
 // Saga
 const editMessage = (callAction: ReturnType<typeof editMessagesAction>) => makeRequest<types.SimpleMessage>({
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`https://api.barbarossa.pp.ua/messages/${localStorage.getItem('messageId')}`, {
+        fetch:             () => fetch(`https://api.barbarossa.pp.ua/messages/${callAction.payload._id}`, {
             method:  'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ text: callAction.payload }),
+            body: JSON.stringify({ text: callAction.payload.text }),
         }),
+
     },
 });
 

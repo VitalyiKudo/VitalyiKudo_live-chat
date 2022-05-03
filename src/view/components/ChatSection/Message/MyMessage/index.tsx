@@ -2,20 +2,24 @@
 // Core
 import classNames from 'classnames';
 import moment from 'moment';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 // Bus
 import { useMessages } from '../../../../../bus/messages';
 
 // Types
 import * as types from '../../../../../bus/messages/types';
-interface PropTypes extends types.Message {
-    isEdited: boolean
-}
 
-export const MyMessage: FC<PropTypes> = ({ username, text, createdAt, _id, isEdited }) => {
+export const MyMessage: FC<types.Message> = ({ username, text, createdAt, updatedAt, _id }) => {
+    const [ isEdited, setIsEdited ] = useState(false);
     const [ editMode, setEditMode ] = useState(false);
     const [ editText, setEditText ] = useState(text);
+
+    useEffect(()=>{
+        if (updatedAt !== createdAt) {
+            setIsEdited(true);
+        }
+    }, [ isEdited ]);
 
     const { editMessage, deleteMessage } = useMessages();
 
@@ -27,7 +31,10 @@ export const MyMessage: FC<PropTypes> = ({ username, text, createdAt, _id, isEdi
         localStorage.setItem('messageId', _id);
     };
     const submit = () => {
-        editMessage(editText);
+        editMessage({
+            text: editText,
+            _id,
+        });
         setEditMode(false);
     };
     const deleteMsg = () => {

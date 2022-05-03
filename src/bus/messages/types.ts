@@ -15,6 +15,11 @@ export type SimpleMessage = {
     username: string | undefined,
 }
 
+export type editAction = {
+    _id : string,
+    text: string,
+}
+
 export type Messages = Array<Message>
 
 export type MessagesState = {

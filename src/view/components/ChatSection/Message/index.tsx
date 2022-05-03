@@ -23,7 +23,7 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _
         if (updatedAt !== createdAt) {
             setIsEdited(true);
         }
-    }, [ isEdited ]);
+    }, []);
 
     if (user?.username === username) {
         return (
@@ -31,7 +31,6 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _
                 <MyMessage
                     _id = { _id }
                     createdAt = { createdAt }
-                    isEdited = { isEdited }
                     text = { text }
                     updatedAt = { updatedAt }
                     username = { username }

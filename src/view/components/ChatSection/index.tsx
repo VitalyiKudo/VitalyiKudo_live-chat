@@ -15,10 +15,10 @@ export const ChatSection: FC = () => {
         <S.Container>
             <div className = 'chat-section'>
                 <div className = 'messages'>
-                    {messages?.map((messages, index) => (
+                    {messages?.map((messages) => (
                         <div
                             className = 'chat-message'
-                            key = { index } >
+                            key = { messages._id } >
                             <Message
                                 { ...messages }
                             />

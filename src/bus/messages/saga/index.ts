@@ -18,7 +18,9 @@ export const useMessagesSaga = () => {
     return {
         fetchMessages: () => void dispatch(fetchMessagesAction()),
         createMessage: (message: types.SimpleMessage) => void dispatch(createMessagesAction(message)),
-        editMessage:   (text: string) => void dispatch(editMessagesAction(text)),
+        editMessage:   (newMessage: types.editAction) => {
+            dispatch(editMessagesAction(newMessage));
+        },
         deleteMessage: (id: string) => void dispatch(deleteMessagesAction(id)),
     };
 };
