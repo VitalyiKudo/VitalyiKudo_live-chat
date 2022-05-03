@@ -41,9 +41,11 @@ export const MyMessage: FC<PropTypes> = ({ username, text, createdAt, _id, isEdi
                         editMode
                             ? <div>
                                 <input
+                                    autoFocus
                                     className = 'edit-field'
                                     maxLength = { 100 }
                                     type = 'text'
+                                    value = { editText }
                                     onChange = { (event) => setEditText(event.target.value) }
                                 />
                                 <button
