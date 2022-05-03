@@ -15,7 +15,7 @@ export const ChatSection: FC = () => {
         <S.Container>
             <div className = 'chat-section'>
                 <div className = 'messages'>
-                    {messages?.map((messages) => (
+                    {messages?.map((messages: any) => (
                         <div
                             className = 'chat-message'
                             key = { messages._id } >

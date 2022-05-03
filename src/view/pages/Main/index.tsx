@@ -15,14 +15,14 @@ import * as S from './styles';
 
 const Main: FC = () => {
     const { getUser } = useUser();
-    const { message, fetchMessages } = useMessages();
+    const { fetchMessages } = useMessages();
 
     const [ keyboardStatus, setKeyboardStatus ] = useState(true);
 
     useEffect(() => {
         getUser();
         fetchMessages();
-    }, [ message ]);
+    }, [ ]);
 
     const keyboardHandler = () => {
         keyboardStatus ? setKeyboardStatus(false) : setKeyboardStatus(true);

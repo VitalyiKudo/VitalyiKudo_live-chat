@@ -7,12 +7,9 @@ import * as types from './types';
 // Reducers
 import * as reducers from './reducers';
 
-const initialState = {
-    messages: null,
-    message:  null,
-};
+const initialState = null;
 
-export const messagesSlice = createSlice<types.MessagesState, typeof reducers>({
+export const messagesSlice = createSlice<types.Messages, typeof reducers>({
     name: 'messages',
     initialState,
     reducers,

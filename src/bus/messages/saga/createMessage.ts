@@ -17,7 +17,7 @@ import * as types from '../types';
 export const createMessagesAction = createAction<types.SimpleMessage>(`${sliceName}/CREATE_MESSAGES_ASYNC`);
 
 // Saga
-const createMessage = (callAction: ReturnType<typeof createMessagesAction>) => makeRequest<types.SimpleMessage>({
+const createMessage = (callAction: ReturnType<typeof createMessagesAction>) => makeRequest<types.Message>({
     callAction,
     fetchOptions: {
         successStatusCode: 201,
@@ -30,7 +30,7 @@ const createMessage = (callAction: ReturnType<typeof createMessagesAction>) => m
         }),
     },
     succes: function* (result) {
-        yield put(messagesActions.setMessage(result));
+        yield put(messagesActions.pullMessage(result));
     },
 });
 

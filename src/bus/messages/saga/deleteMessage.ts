@@ -1,10 +1,10 @@
 // Core
 import { SagaIterator } from '@redux-saga/core';
 import { createAction } from '@reduxjs/toolkit';
-import { takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 // Slice
-import { sliceName } from '../slice';
+import { messagesActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
@@ -14,10 +14,10 @@ import { makeRequest } from '../../../tools/utils';
 export const deleteMessagesAction = createAction<string>(`${sliceName}/DELETE_MESSAGE_ASYNC`);
 
 // Types
-import { Messages } from '../types';
+import * as type from '../types';
 
 // Saga
-const deleteMessage = (callAction: ReturnType<typeof deleteMessagesAction>) => makeRequest<Messages>({
+const deleteMessage = (callAction: ReturnType<typeof deleteMessagesAction>) => makeRequest<type.Message>({
     callAction,
     fetchOptions: {
         successStatusCode: 200,
@@ -27,6 +27,9 @@ const deleteMessage = (callAction: ReturnType<typeof deleteMessagesAction>) => m
                 'Content-Type': 'application/json',
             },
         }),
+    },
+    succes: function* () {
+        yield put(messagesActions.deleteMessage(callAction.payload));
     },
 });
 

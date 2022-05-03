@@ -9,8 +9,8 @@ import { useMessagesSaga } from './saga';
 
 export const useMessages = () => {
     const { fetchMessages, createMessage, editMessage, deleteMessage } = useMessagesSaga();
-    const messages = useSelector((state) => state.messages.messages); // Add messages to ./src/init/redux/index.ts
-    const message = useSelector((state) => state.messages.message);
+    const messages = useSelector((state) => state.messages); // Add messages to ./src/init/redux/index.ts
+    const message = useSelector((state) => state.message);
 
     useEffect(() => {
         setTimeout(fetchMessages, 3000);

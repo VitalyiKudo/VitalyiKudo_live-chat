@@ -1,10 +1,10 @@
 // Core
 import { SagaIterator } from '@redux-saga/core';
 import { createAction } from '@reduxjs/toolkit';
-import { takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 // Slice
-import { sliceName } from '../slice';
+import { messagesActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
@@ -17,7 +17,7 @@ import * as types from '../types';
 export const editMessagesAction = createAction<types.editAction>(`${sliceName}/EDIT_MESSAGES_ASYNC`);
 
 // Saga
-const editMessage = (callAction: ReturnType<typeof editMessagesAction>) => makeRequest<types.SimpleMessage>({
+const editMessage = (callAction: ReturnType<typeof editMessagesAction>) => makeRequest<types.Message>({
     callAction,
     fetchOptions: {
         successStatusCode: 200,
@@ -28,7 +28,9 @@ const editMessage = (callAction: ReturnType<typeof editMessagesAction>) => makeR
             },
             body: JSON.stringify({ text: callAction.payload.text }),
         }),
-
+    },
+    succes: function* (result) {
+        yield put(messagesActions.editMessage(result));
     },
 });
 
