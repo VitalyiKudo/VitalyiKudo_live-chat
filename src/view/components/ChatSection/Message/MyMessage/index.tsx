@@ -26,14 +26,14 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
     }, [ updatedAt ]);
 
     const sendMessage = () => {
-        if (editText !== text) {
+        if (!editText) {
+            deleteMessage(_id);
+        }
+        if (editText && editText !== text) {
             editMessage({
                 text: editText,
                 _id,
             });
-        }
-        if (!editText) {
-            deleteMessage(_id);
         }
     };
 
