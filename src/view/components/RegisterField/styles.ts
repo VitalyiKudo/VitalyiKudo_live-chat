@@ -20,7 +20,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid white;
+    border: 3px solid #213140;
     box-shadow: -1px 3px 5px -1px rgba(0,0,0,0.71);
     @media (max-width: 850px) {
         width: 650px;
@@ -40,10 +40,12 @@ export const Container = styled.div`
         height: 100px;
     }
     .chat-name {
-        font-size: 30px;
+        color: #3C9CEE;
+        font-size: 35px;
         font-weight: 550;
     }
     .field-heading {
+        color:  #3C9CEE;
         margin-top: 20px;
         font-size: 20px;
     }
@@ -64,11 +66,11 @@ export const Container = styled.div`
             font-size: 20px;
             color: white;
             border: 1px solid black;
-            background-color: #00BFFF;
+            background-color: #3C9CEE;
             &:hover {
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
                 transition: 0.4s;
-                background-color:  #FF69B4;
+                /* background-color:  #FF69B4; */
             }
         }
         @media (max-width: 510px) {

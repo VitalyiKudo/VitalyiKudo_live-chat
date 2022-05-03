@@ -27,11 +27,6 @@ export const RegisterField: FC = () => {
             <main className = 'main'>
                 <div className = 'line'></div>
                 <div className = 'fields-section'>
-                    <img
-                        alt = 'live-chat'
-                        className = 'chat-image'
-                        src = 'https://icon-library.com/images/pink-messages-icon/pink-messages-icon-7.jpg'
-                    />
                     <h3 className = 'chat-name'>Live chat</h3>
                     <p className = 'field-heading'>
                         Enter a nickname to introduce yourself

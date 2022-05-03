@@ -16,6 +16,7 @@ export const Container = styled.div`
     align-items: center;
     }
     .user-name {
+        color: #20B2AA;
         padding: 20px 0px;
         font-size: 30px;
     }
@@ -61,20 +62,8 @@ export const Container = styled.div`
         border: 1px solid black;
         box-shadow: -1px 3px 5px -1px rgba(0,0,0,0.71);
         width: 800px;
-        height: 700px;
+        height: 600px;
         margin: 30px auto;
-        @media (max-height: 1111px) {
-            height: 850px;
-        }
-        @media (max-width: 700px) {
-            width: 400px;
-            height: 850px;
-        }
-        @media (max-width: 408px) {
-            border: none;
-            box-shadow: none;
-            width: 100%;
-        }
         .chat-message {
             padding: 10px;
         }
@@ -87,9 +76,6 @@ export const Container = styled.div`
             width: 694px;
             font-size: 20px;
             height: 40px;
-            @media (max-width: 700px) {
-                width: 294.5px;
-            }
         }
         .submit {
             width: 100px;
@@ -104,7 +90,7 @@ export const Container = styled.div`
         }
     }
     .keyboard-btn {
-        margin-top: 10px;
+        margin: 5px auto;
         background-color: #3C9CEE;
         font-size: 17px;
         border: 1px solid black;

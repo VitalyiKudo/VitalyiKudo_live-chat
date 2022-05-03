@@ -6,7 +6,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    /* margin-bottom: 200px; */
 }
 .keyboard {
     width: 800px;
@@ -14,7 +15,6 @@ main {
     border-radius: 10px;
 }
 .keyboard-row {
-    /* width: 100%; */
     display: grid;
     grid-gap: 1px;
 }
