@@ -9,85 +9,9 @@ export const Container = styled.div`
     background-size: cover;
     width: 100%;
     height: 100vh;
-    header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    }
-    .user-name {
-        color: #20B2AA;
-        padding: 20px 0px;
-        font-size: 30px;
-    }
-    .name-span {
-        font-weight: bold;
-    }
-    .logout {
-        position: relative;
-        font-size: 16px;
-        width: 250px;
-        height: 30px;
-        background-color: #3C9CEE;
-        border: 1px solid black;
-        margin: 2px 0px 0px 5px;
-            &:hover {
-                box-shadow: 0px 2px 5px -0.5px rgba(0,0,0,0.71);
-                transition: 0.3s;
-            } 
-            @media (max-width: 408px) {
-                height: 40px;
-            }
-    }
-    .logout-image {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        width: 30px;
-        height: 25px;
-            @media (max-width: 408px) {
-                top: 5px;
-                rigth: 1px;
-            }
-    }
     .messages {
         display: flex;
         flex-direction: column-reverse;
-    }
-    .chat-section {
-        display: flex;
-        flex-direction: column-reverse;
-        background-color:#314D6A;
-        overflow: auto;
-        border: 1px solid black;
-        box-shadow: -1px 3px 5px -1px rgba(0,0,0,0.71);
-        width: 800px;
-        height: 600px;
-        margin: 30px auto;
-        .chat-message {
-            padding: 10px;
-        }
-    }
-    .entry-field {
-        display: flex;
-        justify-content: center;
-        margin-top: -30px;
-        .message-field {
-            width: 694px;
-            font-size: 20px;
-            height: 40px;
-        }
-        .submit {
-            width: 100px;
-            font-size: 17px;
-            background-color: #3C9CEE;
-            border: 1px solid black;
-            /* &:hover {
-                background-color: #00BFFF;
-                transition: 0.4s;
-                color: white;
-            } */
-        }
     }
     .keyboard-btn {
         margin: 5px auto;

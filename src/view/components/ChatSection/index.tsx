@@ -7,20 +7,22 @@ import { useMessages } from '../../../bus/messages';
 
 // Styles
 import * as S from './styles';
+import { useUser } from '../../../bus/user';
 
 export const ChatSection: FC = () => {
     const { messages } = useMessages();
+    const { user } = useUser();
 
     return (
         <S.Container>
             <div className = 'chat-section'>
                 <div className = 'messages'>
-                    {messages?.map((messages: any) => (
+                    {messages?.map((message: any) => (
                         <div
-                            className = 'chat-message'
-                            key = { messages._id } >
+                            className = { message.username === user?.username ? 'my-chat-message' : 'chat-message' }
+                            key = { message._id } >
                             <Message
-                                { ...messages }
+                                { ...message }
                             />
                         </div>
                         ))}

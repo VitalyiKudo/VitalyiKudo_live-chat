@@ -6,8 +6,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 10px; */
-    /* margin-bottom: 200px; */
 }
 .keyboard {
     width: 800px;
@@ -52,5 +50,15 @@ main {
 }
 .space {
     grid-column: span 7;
+}
+@media (max-width: 1440px) {
+    .keyboard {
+        width: 700px;
+    }
+}
+@media (max-width: 1024px) {
+    .keyboard {
+        width: 550px;
+    }
 }
 `;

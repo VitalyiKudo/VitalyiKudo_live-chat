@@ -8,6 +8,7 @@ import { useUser } from '../../../../bus/user';
 
 // Styles
 import * as S from './styles';
+import * as Styled from './media';
 import { MyMessage } from './MyMessage';
 
 // Types
@@ -28,6 +29,7 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _
     if (user?.username === username) {
         return (
             <S.Container>
+                <Styled.Media>
                 <MyMessage
                     _id = { _id }
                     createdAt = { createdAt }
@@ -35,12 +37,14 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _
                     updatedAt = { updatedAt }
                     username = { username }
                 />
+                </Styled.Media>
             </S.Container>
         );
     }
 
     return (
         <S.Container>
+            <Styled.Media>
             <main className = 'message'>
                 <p className = 'name'>{username}</p>
                 <div className = 'text'>{text}</div>
@@ -51,6 +55,7 @@ export const Message: FC<PropTypes> = ({ username, text, createdAt, updatedAt, _
                         : null
                     }
             </main>
+            </Styled.Media>
         </S.Container>
     );
 };

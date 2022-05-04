@@ -13,7 +13,22 @@ export const Container = styled.div`
     height: 600px;
     margin: 30px auto;
     .chat-message {
+        display: flex;
         padding: 10px;
+    }
+    .my-chat-message {
+        display: flex;
+        justify-content: end;
+        padding: 10px;
+    }
+    @media (max-width: 1440px) {
+        width: 700px;
+    }
+    @media (max-width: 1024px) {
+        width: 550px;
+    }
+    @media (max-width: 570px) {
+        width: 99%;
     }
 }
 `;

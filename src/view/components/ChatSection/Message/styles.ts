@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 .message, .my-message {
+position: relative;
 overflow-wrap: break-word;
 overflow: visible;
 box-shadow: -1px 3px 5px -2px #000000;
@@ -17,20 +18,16 @@ height: 80px;
     font-size: 18px;
 }
 .create-date, .my-create-date {
-    padding-left: 220px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
     font-size: 14px;
 }
 .edit-status, .my-edit-status {
+    position: absolute;
+    top: 60px;
+    left: 22px;
     font-weight: bold;
-}
-.my-message {
-    margin-left: 460px;
-}
-.edit-status {
-    margin: -17px 200px 0px 0px;
-}
-.my-edit-status {
-    margin: -60px 200px 0px 0px;
 }
 .name {
     color: #3C9CEE;
@@ -41,7 +38,9 @@ height: 80px;
     padding-left: 0px;
 }
 .buttons {
-    margin: -76.5px 180px 100px 0px;
+    position: absolute;
+    top: 2px;
+    left: 20px;
 }
 .message-btn {
     background-color: white;
@@ -53,7 +52,6 @@ height: 80px;
 .edit {
     width: 340px;
     height: 80px;
-    margin-left: 410px;
     .edit-field {
         height: 20px;
         margin: 10px 0px 10px 0px;
@@ -67,12 +65,26 @@ height: 80px;
         background-color:  #20B2AA;
         color: white;
     }
+    .buttons {
+        position: absolute;
+    }
     .my-create-date {
         padding-left: 280px;
     }
-    .buttons {
-        margin-right: 243px;
-        margin-bottom: 5px;
+    .my-edit-status {
+        display: none;
+    }
+}
+.mobile-buttons {
+    display: none;
+    position: absolute;
+    top: -1px;
+    left: -25px;
+    .mobile-btn {
+        background-color:  #20B2AA;
+        border: 1px solid black;
+        color: white;
+        height: 41px;
     }
 }
 `;
