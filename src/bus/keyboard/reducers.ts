@@ -15,7 +15,10 @@ export const setFocus: types.BaseContact<number> = (state, action) => {
     return state;
 };
 
-export const deleteFocus : types.BaseContact<number> = (state, action) => {
+export const deleteFocus : types.BaseContact<number | null> = (state, action) => {
+    if (action.payload === null) {
+        state.focus = [];
+    }
     const filedState = state.focus?.filter((key) => key !== action.payload);
 
     state.focus = filedState;

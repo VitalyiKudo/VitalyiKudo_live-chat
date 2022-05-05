@@ -16,7 +16,7 @@ export const useKeyboard = () => {
     const setKeyboardValue = (value: string) => dispatch(keyboardActions.setValue(value));
     const setUpperCase = (mode: boolean) => dispatch(keyboardActions.setUpperCase(mode));
     const setFocus = (value: number) => dispatch(keyboardActions.setFocus(value));
-    const deleteFocus = (value: number) => dispatch(keyboardActions.deleteFocus(value));
+    const deleteFocus = (value: number | null) => dispatch(keyboardActions.deleteFocus(value));
 
     return {
         setKeyboardValue,

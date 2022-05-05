@@ -1,5 +1,5 @@
 // Core
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { useKeyboard } from '../../../bus/keyboard';
 
 // Bus
@@ -11,8 +11,9 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
-    const { keyboard, upperCase, setKeyboardValue, focus, setFocus, deleteFocus } = useKeyboard();
+    const { keyboard, upperCase, setUpperCase, setKeyboardValue, setFocus, deleteFocus } = useKeyboard();
     const { user } = useUser();
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const sendMessage = () => {
     if (keyboard) {
@@ -24,20 +25,27 @@ export const EntryField: FC = () => {
     setKeyboardValue('');
     };
 
-    const keyDown = (event: any) => {
-        setFocus(event.keyCode);
-        if (event.keyCode === 13) {
-            sendMessage();
-        }
-    };
-    const keyUp = (event: any) => {
-        deleteFocus(event.keyCode);
-    };
-
-    console.log(focus);
+    useEffect(() => {
+        window.addEventListener('keydown', (event: any) => {
+            inputRef.current?.focus();
+            setFocus(event.keyCode);
+            if (event.keyCode === 13) {
+                sendMessage();
+            }
+            if (event.keyCode === 16) {
+                setUpperCase(true);
+            }
+        });
+        window.addEventListener('keyup', (event: any) => {
+            deleteFocus(event.keyCode);
+            if (event.keyCode === 16) {
+                setUpperCase(false);
+            }
+        });
+    }, []);
 
     const submitText = () => {
-    sendMessage();
+        sendMessage();
     };
 
     return (
@@ -45,11 +53,10 @@ export const EntryField: FC = () => {
             <div className = 'entry-field'>
                 <input
                     className = 'message-field'
+                    ref = { inputRef }
                     type = 'text'
                     value = { upperCase ? keyboard.toUpperCase() : keyboard }
                     onChange = { (element) => setKeyboardValue(element.target.value) }
-                    onKeyDown = { keyDown }
-                    onKeyUp = { keyUp }
                 />
                 <button
                     className = 'submit'
