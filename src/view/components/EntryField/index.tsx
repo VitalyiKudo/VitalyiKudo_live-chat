@@ -27,7 +27,7 @@ export const EntryField: FC = () => {
 
     useEffect(() => {
         window.addEventListener('keydown', (event: any) => {
-            inputRef.current?.focus();
+            // inputRef.current?.focus();
             setFocus(event.keyCode);
             if (event.keyCode === 13) {
                 sendMessage();
