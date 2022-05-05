@@ -7,10 +7,9 @@ type PropTypes = {
     text: string,
     _id: string,
     editHandler: Function,
-    buttonsHandler: Function,
 }
 
-export const EditMessage: FC<PropTypes> = ({ text, _id, editHandler, buttonsHandler }) => {
+export const EditMessage: FC<PropTypes> = ({ text, _id, editHandler }) => {
     const [ editText, setEditText ] = useState(text);
     const { deleteMessage, editMessage } = useMessages();
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -41,12 +40,10 @@ export const EditMessage: FC<PropTypes> = ({ text, _id, editHandler, buttonsHand
         if (!event.key) {
             sendMessage();
             editHandler();
-            buttonsHandler();
         }
         if (event.key === 'Enter') {
             sendMessage();
             editHandler();
-            buttonsHandler();
         }
     };
 

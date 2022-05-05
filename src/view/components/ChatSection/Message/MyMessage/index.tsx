@@ -10,14 +10,15 @@ import { useMessages } from '../../../../../bus/messages';
 // Types
 import * as types from '../../../../../bus/messages/types';
 import { EditMessage } from '../EditMessage';
+import { ModalDelete } from '../ModalDelete';
 
 export const MyMessage: FC<types.Message> = ({ username, text, createdAt, updatedAt, _id }) => {
     const { deleteMessage } = useMessages();
     const [ isEdited, setIsEdited ] = useState(false);
-    const [ isMobile, setIsMobile ] = useState(false);
+    const [ isModal, setIsModal ] = useState(false);
     const [ editMode, setEditMode ] = useState(false);
 
-    const myMessage = classNames('my-message', { edit: editMode });
+    const myMessage = classNames('my-message', { edit: editMode }, { modal: isModal });
     const messageBtn = classNames('message-btn', { keep: editMode });
 
     useEffect(()=>{
@@ -26,35 +27,27 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
         }
     }, [ updatedAt ]);
 
-
-    const buttonsHandler = () => {
-        if (!editMode) {
-             isMobile ? setIsMobile(false) : setIsMobile(true);
-        }
-    };
+    const modalHandler = () => isModal ? setIsModal(false) : setIsModal(true);
 
     const editHandler = () => editMode ? setEditMode(false) : setEditMode(true);
 
     const deleteMsg = () => deleteMessage(_id);
 
+
     return (
         <main
             className = { myMessage }>
-            <div onClick = { buttonsHandler }>
-                <p className = 'my-name'>{username}</p>
-                {
+            <p className = 'my-name'>{username}</p>
+            {
                     editMode
                     ?  <EditMessage
                             _id = { _id }
-                            buttonsHandler = { buttonsHandler }
                             editHandler = { editHandler }
                             text = { text }
                        />
                     :  <div className = 'my-text'>{text}</div>
                 }
-                <p className = 'my-create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
-            </div>
-
+            <p className = 'my-create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
             <div className = 'buttons'>
                 <button
                     className = { messageBtn }
@@ -62,7 +55,7 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                 </button>
                 <button
                     className = 'message-btn'
-                    onClick = { deleteMsg }>✕
+                    onClick = { modalHandler }>✕
                 </button>
             </div>
             {
