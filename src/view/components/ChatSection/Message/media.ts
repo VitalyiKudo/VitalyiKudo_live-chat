@@ -47,19 +47,6 @@ export const Media = styled.div`
 }
 
 @media (max-width: 570px) {
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: -1px;
-        left: -15px;
-        .message-btn {
-            background-color:  #20B2AA;
-            border: 1px solid black;
-            color: white;
-            height: 41px;
-        }
-    }
     .message,
     .my-message {
         min-width: 220px;
@@ -97,7 +84,7 @@ export const Media = styled.div`
     .edit {
         width: 220px;
         .edit-field {
-            width: 160px;
+            width: 175px;
         }
     }
 }
@@ -131,15 +118,7 @@ export const Media = styled.div`
     .edit {
         width: 160px;
         .edit-field {
-            width: 110px;
-        }
-    }
-}
-@media (max-width: 340px) {
-    .edit {
-        width: 150px;
-        .edit-field {
-            width: 95px;
+            width: 135px;
         }
     }
 }

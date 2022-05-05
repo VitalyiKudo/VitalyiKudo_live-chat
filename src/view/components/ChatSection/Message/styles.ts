@@ -14,9 +14,12 @@ min-width: 300px;
 max-width: 350px;
 min-height: 80px;
 }
+.name, .my-name {
+    font-size: 18px;
+}
 .text, .my-text {
     text-align: left;
-    padding: 15px 20px;
+    padding: 15px 15px;
     font-size: 18px;
 }
 .create-date, .my-create-date {
@@ -33,21 +36,23 @@ min-height: 80px;
 .name {
     color: #3C9CEE;
 }
+header {
+    display: flex;
+}
+.buttons {
+    margin: 5px 18% 0px 5px;
+}
 .my-name {
     color:  #20B2AA;
     padding-top: 5px;
     padding-left: 0px;
 }
-.buttons {
-    position: absolute;
-    top: 2px;
-    left: 20px;
-}
 .message-btn {
     background-color: white;
     color:  #20B2AA;
     border: 0.5px solid black;
-    width: 30px;
+    height: 20px;
+    width: 40px;
     font-size: 10px;
 }
 .edit {
@@ -65,9 +70,6 @@ min-height: 80px;
     .keep, .edit-btn {
         background-color:  #20B2AA;
         color: white;
-    }
-    .buttons {
-        position: absolute;
     }
     .my-create-date {
         padding-left: 280px;
@@ -98,5 +100,6 @@ min-height: 80px;
         width: 80%; /* Could be more or less, depending on screen size */
     }
 }
+
 `;
 

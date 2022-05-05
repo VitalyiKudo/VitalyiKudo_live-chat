@@ -151,4 +151,8 @@
             "backgroundColor": "rgb(253,184,51, 0.2)",
         },
     ],
+    "eslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
 }

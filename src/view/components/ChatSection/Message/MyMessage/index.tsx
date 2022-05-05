@@ -37,7 +37,19 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
     return (
         <main
             className = { myMessage }>
-            <p className = 'my-name'>{username}</p>
+            <header>
+                <div className = 'buttons'>
+                    <button
+                        className = { messageBtn }
+                        onClick = { editHandler }>🖍
+                    </button>
+                    <button
+                        className = 'message-btn'
+                        onClick = { deleteMsg }>✕
+                    </button>
+                </div>
+                <p className = 'my-name'>{username}</p>
+            </header>
             {
                     editMode
                     ?  <EditMessage
@@ -48,16 +60,6 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                     :  <div className = 'my-text'>{text}</div>
                 }
             <p className = 'my-create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
-            <div className = 'buttons'>
-                <button
-                    className = { messageBtn }
-                    onClick = { editHandler }>🖍
-                </button>
-                <button
-                    className = 'message-btn'
-                    onClick = { modalHandler }>✕
-                </button>
-            </div>
             {
                 isEdited
                 ? <p className = 'my-edit-status'>edited</p>
