@@ -11,7 +11,7 @@ border: 0.5px solid grey;
 border-radius: 15px;
 background-color: white;
 min-width: 300px;
-max-width: 450px;
+max-width: 350px;
 min-height: 80px;
 }
 .text, .my-text {

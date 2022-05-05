@@ -4,7 +4,8 @@ export const Media = styled.div`
 @media (max-width: 1440px) {
     .message,
     .my-message {
-        width: 280px;
+        min-width: 280px;
+        max-width: 330px;
     }
     .edit {
         width: 300px;
@@ -23,7 +24,8 @@ export const Media = styled.div`
 @media (max-width: 1024px) {
     .message,
     .my-message {
-        width: 220px;
+        min-width: 220px;
+        max-width: 250px;
     }
     .buttons {
         left: 10px;
@@ -60,7 +62,7 @@ export const Media = styled.div`
     }
     .message,
     .my-message {
-        width: 220px;
+        min-width: 220px;
     }
     .edit-status,
     .my-edit-status {
@@ -90,7 +92,7 @@ export const Media = styled.div`
 @media (max-width: 530px) {
     .message,
     .my-message {
-        width: 200px;
+        min-width: 200px;
     }
     .edit {
         width: 220px;
@@ -103,7 +105,8 @@ export const Media = styled.div`
 @media (max-width: 480px) {
     .message,
     .my-message {
-        width: 180px;
+        min-width: 180px;
+        max-width: 220px;
     }
     .edit {
         width: 200px;
@@ -112,10 +115,10 @@ export const Media = styled.div`
         }
     }
 }
-@media (max-width: 410px) {
+@media (max-width: 460px) {
     .message,
     .my-message {
-        width: 160px;
+        max-width: 250px;
     }
     .edit {
         width: 180px;
@@ -125,10 +128,6 @@ export const Media = styled.div`
     }
 }
 @media (max-width: 370px) {
-    .message,
-    .my-message {
-        width: 140px;
-    }
     .edit {
         width: 160px;
         .edit-field {
@@ -137,10 +136,6 @@ export const Media = styled.div`
     }
 }
 @media (max-width: 340px) {
-    .message,
-    .my-message {
-        width: 130px;
-    }
     .edit {
         width: 150px;
         .edit-field {
