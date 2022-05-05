@@ -14,7 +14,7 @@ export const Container = styled.div`
         flex-direction: column-reverse;
     }
     .keyboard-btn {
-        margin: 5px auto;
+        margin: 10px auto;
         background-color: #3C9CEE;
         font-size: 17px;
         border: 1px solid black;

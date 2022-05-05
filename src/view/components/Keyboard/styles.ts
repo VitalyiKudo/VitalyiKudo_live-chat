@@ -19,19 +19,19 @@ main {
 /* rows  */
 .first-row, .second-row {
     grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(1, 50px);
+    grid-template-rows: repeat(1, 5vh);
 }
 .third-row {
     grid-template-columns: repeat(18,  1fr);
-    grid-template-rows: repeat(1, 50px);
+    grid-template-rows: repeat(1, 5vh);
 }
 .fourth-row {
     grid-template-columns: repeat(20,  1fr);
-    grid-template-rows: repeat(1, 50px);
+    grid-template-rows: repeat(1, 5vh);
 }
 .fifth-row {
     grid-template-columns: repeat(15, 1fr);
-    grid-template-rows: repeat(1, 50px);
+    grid-template-rows: repeat(1, 5vh);
 }
 /* keys  */
 .key {

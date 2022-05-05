@@ -10,7 +10,9 @@ export const Container = styled.div`
     border: 1px solid black;
     box-shadow: -1px 3px 5px -1px rgba(0,0,0,0.71);
     width: 800px;
-    height: 600px;
+    position: relative;
+    /* min-height: 600px; */
+    height: 50vh;
     margin: 30px auto;
     .chat-message {
         display: flex;
@@ -21,14 +23,17 @@ export const Container = styled.div`
         justify-content: end;
         padding: 10px;
     }
-    @media (max-width: 1440px) {
+     @media (max-width: 1440px) {
         width: 700px;
-    }
+    } 
     @media (max-width: 1024px) {
         width: 550px;
     }
     @media (max-width: 570px) {
         width: 99%;
+    }
+    @media (max-height: 750px) {
+        height: 40vh;
     }
 }
 `;
