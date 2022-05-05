@@ -40,11 +40,11 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
         backspace: value === 'Backspace',
     });
 
-    const keyUp = () => {
+    const deleteKey = () => {
         deleteFocus(code);
     };
 
-    const keyDown = () => {
+    const setKey = () => {
         setFocus(code);
     };
 
@@ -79,8 +79,9 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
             className = { keyClass }
             isActive = { color }
             onClick = { keyboardHandler }
-            onMouseDown = { keyDown }
-            onMouseUp = { keyUp }>
+            onMouseDown = { setKey }
+            onMouseOut = { deleteKey }
+            onMouseUp = { deleteKey }>
             { localeKey }
         </S.Container>
     );
