@@ -1,9 +1,6 @@
 // Core
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { useMessages } from '../../../../../bus/messages';
-
-// Bus
-// import {} from '../../../bus/'
 
 // Types
 type PropTypes = {
@@ -16,6 +13,13 @@ type PropTypes = {
 export const EditMessage: FC<PropTypes> = ({ text, _id, editHandler, buttonsHandler }) => {
     const [ editText, setEditText ] = useState(text);
     const { deleteMessage, editMessage } = useMessages();
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        window.addEventListener('keydown', () => {
+            inputRef.current?.focus();
+        });
+    }, []);
 
     const sendMessage = () => {
         if (!editText) {
@@ -49,9 +53,9 @@ export const EditMessage: FC<PropTypes> = ({ text, _id, editHandler, buttonsHand
     return (
         <div>
             <input
-                autoFocus
                 className = 'edit-field'
                 maxLength = { 100 }
+                ref = { inputRef }
                 type = 'text'
                 value = { editText }
                 onChange = { changeText }

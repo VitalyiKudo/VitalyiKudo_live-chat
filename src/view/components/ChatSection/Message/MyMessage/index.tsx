@@ -66,9 +66,9 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                 </button>
             </div>
             {
-                        isEdited
-                        ? <p className = 'my-edit-status'>edited</p>
-                        : null
+                isEdited
+                ? <p className = 'my-edit-status'>edited</p>
+                : null
             }
         </main>
     );
