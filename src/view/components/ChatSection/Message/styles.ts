@@ -75,18 +75,8 @@ height: 80px;
         display: none;
     }
 }
-.mobile-buttons {
+.mobile {
     display: none;
-    position: absolute;
-    top: -1px;
-    left: -20px;
-    .mobile-btn {
-        background-color:  #20B2AA;
-        
-        border: 1px solid black;
-        color: white;
-        height: 41px;
-    }
 }
 `;
 

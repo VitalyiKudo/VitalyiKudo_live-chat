@@ -9,12 +9,11 @@ import { useMessages } from '../../../../../bus/messages';
 type PropTypes = {
     text: string,
     _id: string,
-    isMobile: boolean,
     editHandler: Function,
     buttonsHandler: Function,
 }
 
-export const EditMessage: FC<PropTypes> = ({ text, isMobile, _id, editHandler, buttonsHandler }) => {
+export const EditMessage: FC<PropTypes> = ({ text, _id, editHandler, buttonsHandler }) => {
     const [ editText, setEditText ] = useState(text);
     const { deleteMessage, editMessage } = useMessages();
 
@@ -60,7 +59,7 @@ export const EditMessage: FC<PropTypes> = ({ text, isMobile, _id, editHandler, b
             />
             <button
                 className = 'edit-btn'
-                onClick = { submit }>{isMobile ? '✔' : 'EDIT'}
+                onClick = { submit }><span className = 'mobile'>✔</span><span className = 'desktop'>EDIT</span>
             </button>
         </div>
     );

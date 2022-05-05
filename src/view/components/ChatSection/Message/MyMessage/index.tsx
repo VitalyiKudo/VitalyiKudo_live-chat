@@ -48,7 +48,6 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                             _id = { _id }
                             buttonsHandler = { buttonsHandler }
                             editHandler = { editHandler }
-                            isMobile = { isMobile }
                             text = { text }
                        />
                     :  <div className = 'my-text'>{text}</div>
@@ -66,20 +65,6 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                     onClick = { deleteMsg }>✕
                 </button>
             </div>
-            {
-                    isMobile
-                    ? <div className = 'mobile-buttons'>
-                        <button
-                            className = 'mobile-btn'
-                            onClick = { editHandler }>🖍
-                        </button>
-                        <button
-                            className = 'mobile-btn'
-                            onClick = { deleteMsg }>✕
-                        </button>
-                    </div>
-                    : null
-            }
             {
                         isEdited
                         ? <p className = 'my-edit-status'>edited</p>

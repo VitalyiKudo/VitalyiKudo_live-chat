@@ -45,29 +45,45 @@ export const Media = styled.div`
 }
 
 @media (max-width: 570px) {
-    .get-buttons {
-        display: block;
-    }
-    .mobile-buttons {
+    .buttons {
         display: flex;
         flex-direction: column;
-    }
-    .buttons {
-        display: none;
+        position: absolute;
+        top: -1px;
+        left: -15px;
+        .message-btn {
+            background-color:  #20B2AA;
+            border: 1px solid black;
+            color: white;
+            height: 41px;
+        }
     }
     .message,
     .my-message {
         width: 220px;
     }
+    .edit-status,
+    .my-edit-status {
+        left: 20px;
+    }
     .edit {
         width: 240px;
         .edit-field {
             font-size: 16px;
-            width: 185px;
+            width: 175px;
         }
         .edit-btn {
             height: 25px;
         }
+        .buttons {
+            left: -20px;
+        }
+    }
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
     }
 }
 
@@ -79,7 +95,7 @@ export const Media = styled.div`
     .edit {
         width: 220px;
         .edit-field {
-            width: 180px;
+            width: 160px;
         }
     }
 }
@@ -92,7 +108,7 @@ export const Media = styled.div`
     .edit {
         width: 200px;
         .edit-field {
-            width: 159px;
+            width: 142px;
         }
     }
 }
@@ -104,7 +120,7 @@ export const Media = styled.div`
     .edit {
         width: 180px;
         .edit-field {
-            width: 139px;
+            width: 132px;
         }
     }
 }
@@ -116,7 +132,7 @@ export const Media = styled.div`
     .edit {
         width: 160px;
         .edit-field {
-            width: 119px;
+            width: 110px;
         }
     }
 }
@@ -128,7 +144,7 @@ export const Media = styled.div`
     .edit {
         width: 150px;
         .edit-field {
-            width: 109px;
+            width: 95px;
         }
     }
 }
