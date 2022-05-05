@@ -11,7 +11,7 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
-    const { keyboard, upperCase, setKeyboardValue, focus, setFocus } = useKeyboard();
+    const { keyboard, upperCase, setKeyboardValue, focus, setFocus, deleteFocus } = useKeyboard();
     const { user } = useUser();
 
     const sendMessage = () => {
@@ -25,18 +25,16 @@ export const EntryField: FC = () => {
     };
 
     const keyDown = (event: any) => {
-        if (!focus) {
-            setFocus(event.keyCode);
-        }
+        setFocus(event.keyCode);
         if (event.keyCode === 13) {
             sendMessage();
         }
     };
-    const keyUp = () => {
-        if (focus) {
-            setFocus(null);
-        }
+    const keyUp = (event: any) => {
+        deleteFocus(event.keyCode);
     };
+
+    console.log(focus);
 
     const submitText = () => {
     sendMessage();

@@ -1,9 +1,6 @@
 // Core
 // import { useEffect } from 'react';
 
-// Types
-import * as type from './types';
-
 // Tools
 import { useDispatch } from 'react-redux';
 import { useSelector } from '../../tools/hooks';
@@ -18,12 +15,14 @@ export const useKeyboard = () => {
 
     const setKeyboardValue = (value: string) => dispatch(keyboardActions.setValue(value));
     const setUpperCase = (mode: boolean) => dispatch(keyboardActions.setUpperCase(mode));
-    const setFocus = (value: type.focus) => dispatch(keyboardActions.setFocus(value));
+    const setFocus = (value: number) => dispatch(keyboardActions.setFocus(value));
+    const deleteFocus = (value: number) => dispatch(keyboardActions.deleteFocus(value));
 
     return {
         setKeyboardValue,
         setUpperCase,
         setFocus,
+        deleteFocus,
         keyboard,
         upperCase,
         focus,

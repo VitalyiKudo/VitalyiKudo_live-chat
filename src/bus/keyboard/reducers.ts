@@ -5,8 +5,20 @@ export const setValue: types.BaseContact<string> = (state, action) => {
     state.value = action.payload;
 };
 
-export const setFocus: types.BaseContact<types.focus> = (state, action) => {
-    state.focus = action.payload;
+export const setFocus: types.BaseContact<number> = (state, action) => {
+    if (state.focus?.includes(action.payload)) {
+        return state;
+    }
+
+    state.focus?.push(action.payload);
+
+    return state;
+};
+
+export const deleteFocus : types.BaseContact<number> = (state, action) => {
+    const filedState = state.focus?.filter((key) => key !== action.payload);
+
+    state.focus = filedState;
 };
 
 export const setUpperCase: types.BaseContact<boolean> = (state, action) => {

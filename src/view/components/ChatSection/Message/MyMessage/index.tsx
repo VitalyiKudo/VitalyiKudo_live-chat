@@ -87,6 +87,16 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                     }
                 <p className = 'my-create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
             </div>
+            <div className = 'buttons'>
+                <button
+                    className = { messageBtn }
+                    onClick = { editHabdler }>🖍
+                </button>
+                <button
+                    className = 'message-btn'
+                    onClick = { deleteMsg }>✕
+                </button>
+            </div>
             {
                     isMobile
                     ? <div className = 'mobile-buttons'>
@@ -99,17 +109,7 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                             onClick = { deleteMsg }>✕
                         </button>
                     </div>
-                    : <div className = 'buttons'>
-                        <button
-                            className = { messageBtn }
-                            onClick = { editHabdler }>🖍
-                        </button>
-                        <button
-                            className = 'message-btn'
-                            onClick = { deleteMsg }>✕
-                        </button>
-                    </div>
-
+                    : null
             }
             {
                         isEdited

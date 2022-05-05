@@ -17,13 +17,13 @@ type PropTypes = {
 }
 
 export const Key: FC<PropTypes> = ({ value, code }) => {
-    const { keyboard, setKeyboardValue, upperCase, setUpperCase, focus, setFocus } = useKeyboard();
+    const { keyboard, setKeyboardValue, upperCase, setUpperCase, focus, setFocus, deleteFocus } = useKeyboard();
     const { createMessage } = useMessages();
     const { user } = useUser();
     const [ color, setColor ] = useState(false);
 
     useEffect(() => {
-        if (focus === code) {
+        if (focus?.includes(code)) {
             setColor(true);
         } else {
             setColor(false);
@@ -40,17 +40,14 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
         backspace: value === 'Backspace',
     });
 
-    const keyDown = () => {
-        if (!focus) {
-            setFocus(code);
-        }
+    const keyUp = () => {
+        deleteFocus(code);
     };
 
-    const keyUp = () => {
-        if (focus) {
-            setFocus(null);
-        }
+    const keyDown = () => {
+        setFocus(code);
     };
+
 
     const keyboardHandler = () => {
         switch (value) {

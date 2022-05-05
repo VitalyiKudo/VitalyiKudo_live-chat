@@ -8,7 +8,7 @@ import * as types from './types';
 import * as reducers from './reducers';
 
 const initialState = {
-    focus:     null,
+    focus:     [],
     value:     '',
     upperCase: false,
 };

@@ -8,7 +8,7 @@ overflow-wrap: break-word;
 overflow: visible;
 box-shadow: -1px 3px 5px -2px #000000;
 border: 0.5px solid grey;
-border-radius: 5%;
+border-radius: 15px;
 background-color: white;
 width: 300px;
 height: 80px;
@@ -79,9 +79,10 @@ height: 80px;
     display: none;
     position: absolute;
     top: -1px;
-    left: -25px;
+    left: -20px;
     .mobile-btn {
         background-color:  #20B2AA;
+        
         border: 1px solid black;
         color: white;
         height: 41px;

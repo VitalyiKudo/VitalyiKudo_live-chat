@@ -2,7 +2,7 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
 // State
-export type focus = number | null;
+export type focus = number[] | undefined;
 
 export type Keyboard = {
     focus: focus,
