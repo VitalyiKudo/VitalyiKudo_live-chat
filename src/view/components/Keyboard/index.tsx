@@ -1,8 +1,8 @@
 // Core
 import React, { FC } from 'react';
 import { useKeyboard } from '../../../bus/keyboard';
+import { useLayout } from '../../../tools/hooks/useLayout';
 import { Key } from './Key';
-import { rows } from './keyboardData';
 
 
 // Bus
@@ -18,7 +18,7 @@ type PropTypes = {
 
 export const Keyboard: FC<PropTypes> = () => {
     const { isEnglish } = useKeyboard();
-    const layout = isEnglish ? rows.ENG : rows.RU;
+    const layout = useLayout(isEnglish);
 
     return (
         <S.Container>

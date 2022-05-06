@@ -33,7 +33,6 @@ export const EntryField: FC = () => {
     setKeyboardValue('');
     };
 
-
     useEffect(() => {
         window.addEventListener('keydown', (event: any) => {
             inputRef.current?.focus();

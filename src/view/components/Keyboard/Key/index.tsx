@@ -26,6 +26,7 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
 
     useEffect(() => {
         if (focus?.includes(code)) {
+                setColor(true);
             setColor(true);
         } else {
             setColor(false);
