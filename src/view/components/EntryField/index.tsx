@@ -11,14 +11,20 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
-    const { keyboard, upperCase, setUpperCase, setKeyboardValue, setFocus, deleteFocus } = useKeyboard();
+    const { keyboard, setUpperCase, setKeyboardValue, setFocus, deleteFocus } = useKeyboard();
     const { user } = useUser();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
+    const myre = useRef(keyboard);
+
+    useEffect(() => {
+        myre.current = keyboard;
+    }, [ keyboard ]);
+
     const sendMessage = () => {
-    if (keyboard.trim()) {
+    if (myre.current && user) {
         createMessage({
-            text:     keyboard,
+            text:     myre.current,
             username: user?.username,
          });
     }
@@ -42,7 +48,7 @@ export const EntryField: FC = () => {
                 setUpperCase(false);
             }
         });
-    }, []);
+    }, [ user ]);
 
     const submitText = () => {
         sendMessage();
@@ -55,7 +61,7 @@ export const EntryField: FC = () => {
                     className = 'message-field'
                     ref = { inputRef }
                     type = 'text'
-                    value = { upperCase ? keyboard.toUpperCase() : keyboard }
+                    value = { keyboard }
                     onChange = { (element) => setKeyboardValue(element.target.value) }
                 />
                 <button
