@@ -32,6 +32,11 @@ header {
         @media (max-width: 408px) {
             height: 40px;
         }
+        @media (max-width: 380px) {
+            .logout-image {
+                display: none;
+            }
+        }
 }
 .logout-image {
     position: absolute;

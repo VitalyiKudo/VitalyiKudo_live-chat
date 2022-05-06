@@ -61,12 +61,13 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
                 setKeyboardValue(keyboard.slice(0, -1));
                 break;
             case 'Enter':
-                if (keyboard) {
+                if (keyboard.trim()) {
                     createMessage({
                     text:     keyboard,
                     username: user?.username,
                     });
                 }
+                setKeyboardValue('');
                 break;
             default:
                 setKeyboardValue(keyboard + localeKey);

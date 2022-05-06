@@ -16,7 +16,7 @@ export const EntryField: FC = () => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const sendMessage = () => {
-    if (keyboard) {
+    if (keyboard.trim()) {
         createMessage({
             text:     keyboard,
             username: user?.username,
