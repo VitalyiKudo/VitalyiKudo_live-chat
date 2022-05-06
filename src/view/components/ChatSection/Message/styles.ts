@@ -78,47 +78,8 @@ header {
         display: none;
     }
 }
-.modal {
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4);
-    .modal-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: #fefefe;
-        margin: 15% auto; 
-        padding: 20px;
-        border: 1px solid #888;
-        width: 20%;
-        height: 8%;
-        border: 3px solid #3C9CEE;
-        border-radius: 5px;
-        .modal-heading {
-            font-size: 25px;
-        }
-        .modal-buttons {
-            padding-top: 20px;
-            align-items: center;
-        }
-        .modal-button:last-child{
-            margin-left: 20px;
-        }
-        .modal-button {
-            border: 3px solid #3C9CEE;
-            background-color: transparent;
-            padding: 5px;
-            font-size: 15px;
-            width: 120px;
-        }
-    }
+.mobile {
+    display: none;
 }
 `;
 
