@@ -17,16 +17,16 @@ export const EntryField: FC = () => {
     const { user } = useUser();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const myre = useRef(keyboard);
+    const keyboardRef = useRef(keyboard);
 
     useEffect(() => {
-        myre.current = keyboard;
+        keyboardRef.current = keyboard;
     }, [ keyboard ]);
 
     const sendMessage = () => {
-    if (myre.current && user) {
+    if (keyboardRef.current.trim() && user) {
         createMessage({
-            text:     myre.current,
+            text:     keyboardRef.current,
             username: user?.username,
          });
     }
