@@ -8,7 +8,7 @@ import { messagesActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
-// import { API_URL } from '../../../init/constants';
+import { API_URL } from '../../../init/constants';
 
 // Types
 import * as types from '../types';
@@ -21,7 +21,7 @@ const createMessage = (callAction: ReturnType<typeof createMessagesAction>) => m
     callAction,
     fetchOptions: {
         successStatusCode: 201,
-        fetch:             () => fetch('https://api.barbarossa.pp.ua/messages', {
+        fetch:             () => fetch(`${API_URL}/messages`, {
             method:  'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ import { messagesActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
-// import { API_URL } from '../../../init/constants';
+import { API_URL } from '../../../init/constants';
 
 // Types
 import * as types from '../types';
@@ -21,7 +21,7 @@ const editMessage = (callAction: ReturnType<typeof editMessagesAction>) => makeR
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`https://api.barbarossa.pp.ua/messages/${callAction.payload._id}`, {
+        fetch:             () => fetch(`${API_URL}/messages/${callAction.payload._id}`, {
             method:  'PUT',
             headers: {
                 'Content-Type': 'application/json',

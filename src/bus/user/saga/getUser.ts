@@ -8,7 +8,7 @@ import { userActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
-// import { API_URL } from '../../../init/constants';
+import { API_URL } from '../../../init/constants';
 
 
 // Action
@@ -22,7 +22,7 @@ const getUser = (callAction: ReturnType<typeof getUserAction>) => makeRequest<Us
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`https://api.barbarossa.pp.ua/users/refresh/${localStorage.getItem('userId')}`, {
+        fetch:             () => fetch(`${API_URL}/users/refresh/${localStorage.getItem('userId')}`, {
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json',

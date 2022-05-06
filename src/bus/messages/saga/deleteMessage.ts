@@ -8,7 +8,7 @@ import { messagesActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
-// import { API_URL } from '../../../init/constants';
+import { API_URL } from '../../../init/constants';
 
 // Action
 export const deleteMessagesAction = createAction<string>(`${sliceName}/DELETE_MESSAGE_ASYNC`);
@@ -21,7 +21,7 @@ const deleteMessage = (callAction: ReturnType<typeof deleteMessagesAction>) => m
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`https://api.barbarossa.pp.ua/messages/${callAction.payload}`, {
+        fetch:             () => fetch(`${API_URL}/messages/${callAction.payload}`, {
             method:  'DELETE',
             headers: {
                 'Content-Type': 'application/json',

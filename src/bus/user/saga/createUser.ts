@@ -8,7 +8,7 @@ import { userActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
-// import { API_URL } from '../../../init/constants';
+import { API_URL } from '../../../init/constants';
 
 import * as types from '../types';
 
@@ -23,7 +23,7 @@ const createUser = (callAction: ReturnType<typeof createUserAction>) => makeRequ
     callAction,
     fetchOptions: {
         successStatusCode: 201,
-        fetch:             () => fetch('https://api.barbarossa.pp.ua/users/register', {
+        fetch:             () => fetch(`${API_URL}/users/register`, {
             method:  'POST',
             headers: {
                 'Content-Type': 'application/json',
