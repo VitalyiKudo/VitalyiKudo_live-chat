@@ -35,22 +35,25 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
 
 
     return (
-        <main
-            className = { myMessage }>
-            <header>
-                <div className = 'buttons'>
-                    <button
-                        className = { messageBtn }
-                        onClick = { editHandler }>🖍
-                    </button>
-                    <button
-                        className = 'message-btn'
-                        onClick = { deleteMsg }>✕
-                    </button>
-                </div>
-                <p className = 'my-name'>{username}</p>
-            </header>
+        <>
             {
+            !isModal
+            && <main
+                className = { myMessage }>
+                <header>
+                    <div className = 'buttons'>
+                        <button
+                            className = { messageBtn }
+                            onClick = { editHandler }>🖍
+                        </button>
+                        <button
+                            className = 'message-btn'
+                            onClick = { modalHandler }>✕
+                        </button>
+                    </div>
+                    <p className = 'my-name'>{username}</p>
+                </header>
+                {
                     editMode
                     ?  <EditMessage
                             _id = { _id }
@@ -59,12 +62,19 @@ export const MyMessage: FC<types.Message> = ({ username, text, createdAt, update
                        />
                     :  <div className = 'my-text'>{text}</div>
                 }
-            <p className = 'my-create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
+                <p className = 'my-create-date'>{moment(createdAt).format('hh/mm/ss')}</p>
+                {
+                isEdited && <p className = 'my-edit-status'>edited</p>
+                }
+            </main>
+        }
             {
-                isEdited
-                ? <p className = 'my-edit-status'>edited</p>
-                : null
+                isModal
+                && <ModalDelete
+                    deleteMsg = { deleteMsg }
+                    modalHandler = { modalHandler }
+                   />
             }
-        </main>
+        </>
     );
 };
