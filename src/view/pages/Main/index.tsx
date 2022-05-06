@@ -20,7 +20,9 @@ const Main: FC = () => {
     const [ keyboardStatus, setKeyboardStatus ] = useState(true);
 
     useEffect(() => {
-        getUser();
+        if (localStorage.getItem('userId')) {
+            getUser();
+        }
         fetchMessages();
     }, [ ]);
 

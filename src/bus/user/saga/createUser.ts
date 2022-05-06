@@ -32,8 +32,6 @@ const createUser = (callAction: ReturnType<typeof createUserAction>) => makeRequ
         }),
     },
     succes: function* (result) {
-        console.log('res ', result);
-
         yield put(userActions.setUser(result));
         yield localStorage.setItem('userId', result._id);
     },
