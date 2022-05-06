@@ -27,3 +27,7 @@ export const deleteFocus : types.BaseContact<number | null> = (state, action) =>
 export const setUpperCase: types.BaseContact<boolean> = (state, action) => {
     state.upperCase = action.payload;
 };
+
+export const setEnglish: types.BaseContact<boolean> = (state, action) => {
+    state.isEnglish = action.payload;
+};

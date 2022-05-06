@@ -11,7 +11,9 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
-    const { keyboard, upperCase, setUpperCase, setKeyboardValue, focus, setFocus, deleteFocus } = useKeyboard();
+    const {
+        keyboard, upperCase, setUpperCase, setKeyboardValue, focus, setFocus, deleteFocus,
+    } = useKeyboard();
     const { user } = useUser();
     const inputRef = useRef<HTMLInputElement | null>(null);
 

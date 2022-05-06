@@ -1,5 +1,6 @@
 // Core
 import React, { FC } from 'react';
+import { useKeyboard } from '../../../bus/keyboard';
 import { Key } from './Key';
 import { rows } from './keyboardData';
 
@@ -16,13 +17,16 @@ type PropTypes = {
 }
 
 export const Keyboard: FC<PropTypes> = () => {
+    const { isEnglish } = useKeyboard();
+    const layout = isEnglish ? rows.ENG : rows.RU;
+
     return (
         <S.Container>
             <main>
-                <div className = 'keyboard'>
+                <div className = { isEnglish ? 'keyboard-eng' : 'keyboard-ru' }>
                     <div className = 'keyboard-row first-row'>
                         {
-                            rows.ENG.firstRow.keys.map((value, index) => {
+                            layout.firstRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
@@ -34,7 +38,7 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row second-row'>
                         {
-                            rows.ENG.secondRow.keys.map((value, index) => {
+                            layout.secondRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
@@ -46,7 +50,7 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row third-row'>
                         {
-                            rows.ENG.thirdRow.keys.map((value, index) => {
+                            layout.thirdRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
@@ -58,7 +62,7 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row fourth-row'>
                         {
-                            rows.ENG.fourthRow.keys.map((value, index) => {
+                            layout.fourthRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }
@@ -70,7 +74,7 @@ export const Keyboard: FC<PropTypes> = () => {
                     </div>
                     <div className = 'keyboard-row fifth-row'>
                         {
-                            rows.ENG.fifthRow.keys.map((value, index) => {
+                            layout.fifthRow.keys.map((value, index) => {
                                 return (
                                     <Key
                                         key = { index }

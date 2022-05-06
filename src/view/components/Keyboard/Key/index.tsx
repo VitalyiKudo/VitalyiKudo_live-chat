@@ -17,7 +17,9 @@ type PropTypes = {
 }
 
 export const Key: FC<PropTypes> = ({ value, code }) => {
-    const { keyboard, setKeyboardValue, upperCase, setUpperCase, focus, setFocus, deleteFocus } = useKeyboard();
+    const {
+            keyboard, setKeyboardValue, upperCase, setUpperCase, focus, setFocus, deleteFocus, setEnglish,
+        } = useKeyboard();
     const { createMessage } = useMessages();
     const { user } = useUser();
     const [ color, setColor ] = useState(false);
@@ -59,6 +61,12 @@ export const Key: FC<PropTypes> = ({ value, code }) => {
                 break;
             case 'Backspace':
                 setKeyboardValue(keyboard.slice(0, -1));
+                break;
+            case 'En':
+                setEnglish(false);
+                break;
+            case 'Ru':
+                setEnglish(true);
                 break;
             case 'Enter':
                 if (keyboard.trim()) {

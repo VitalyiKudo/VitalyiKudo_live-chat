@@ -8,6 +8,7 @@ export type Keyboard = {
     focus: focus,
     value: string,
     upperCase: boolean,
+    isEnglish: boolean,
 }
 export type KeyboardState = Keyboard
 

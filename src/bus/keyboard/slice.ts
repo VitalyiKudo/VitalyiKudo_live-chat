@@ -11,6 +11,7 @@ const initialState = {
     focus:     [],
     value:     '',
     upperCase: false,
+    isEnglish: false,
 };
 
 export const keyboardSlice = createSlice<types.KeyboardState, typeof reducers>({
