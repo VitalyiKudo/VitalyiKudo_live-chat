@@ -39,6 +39,7 @@ export const RegisterField: FC = () => {
                             type = 'text'
                             value = { userName }
                             onChange = { (event) => setUserName(event.target.value) }
+                            onKeyDown = { (event) => event.keyCode === 13 ? submit(userName) : null }
                         />
                         <button
                             className = 'submit'
