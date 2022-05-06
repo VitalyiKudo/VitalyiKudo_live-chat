@@ -11,7 +11,7 @@ import * as S from './styles';
 
 export const EntryField: FC = () => {
     const { createMessage } = useMessages();
-    const { keyboard, setUpperCase, setKeyboardValue, setFocus, deleteFocus } = useKeyboard();
+    const { keyboard, upperCase, setUpperCase, setKeyboardValue, focus, setFocus, deleteFocus } = useKeyboard();
     const { user } = useUser();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -30,6 +30,7 @@ export const EntryField: FC = () => {
     }
     setKeyboardValue('');
     };
+
 
     useEffect(() => {
         window.addEventListener('keydown', (event: any) => {
@@ -50,6 +51,12 @@ export const EntryField: FC = () => {
         });
     }, [ user ]);
 
+    const upperCaseHandler = () => {
+        if (upperCase && !focus?.includes(16)) {
+            setUpperCase(false);
+        }
+    };
+
     const submitText = () => {
         sendMessage();
     };
@@ -63,6 +70,7 @@ export const EntryField: FC = () => {
                     type = 'text'
                     value = { keyboard }
                     onChange = { (element) => setKeyboardValue(element.target.value) }
+                    onKeyDown = { upperCaseHandler }
                 />
                 <button
                     className = 'submit'
